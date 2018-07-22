@@ -13,8 +13,7 @@
         <RelativeLayout
             android:id="@+id/rl_remote"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/darker_gray">
+            android:layout_height="wrap_content">
 
             <SurfaceView
                 android:id="@+id/surfaceview_remote"

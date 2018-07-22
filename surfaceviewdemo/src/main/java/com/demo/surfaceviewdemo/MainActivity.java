@@ -185,6 +185,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             }
         });
 
+
+        defaultLocalMargin = DisplayUtil.dip2px(this, defaultLocalMargin);
         defaultLocalwidth = DisplayUtil.dip2px(this, defaultLocalwidth);
         defaultLocalHeight = (int) (DisplayUtil.getScreenHeight(this) / (float) DisplayUtil.getScreenWidth(this) * defaultLocalwidth);
         zoomOpera(rlRemote, surfaceviewRemote, rlLocal, surfaceviewLocal);
@@ -347,8 +349,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * 大小视图切换 （小视图在前面、大视图在后面）
      *
-     * @param sourcView  之前的相对布局大小
-     * @param beforeview 之前的surfaceview
+     * @param sourcView  之前相对布局大小
+     * @param beforeview 之前surfaceview
      * @param detView    之后相对布局大小
      * @param afterview  之后的surfaceview
      */
@@ -369,9 +371,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         //设置本地小视图RelativeLayout 的属性
         params1 = new RelativeLayout.LayoutParams(defaultLocalwidth, defaultLocalHeight);
         params1.addRule(RelativeLayout.ALIGN_PARENT_RIGHT, RelativeLayout.TRUE);
-
-        int margin = DisplayUtil.dip2px(this, defaultLocalMargin);
-        params1.setMargins(0, margin, margin, 0);
+        params1.setMargins(0, defaultLocalMargin, defaultLocalMargin, 0);
         //在调用setZOrderOnTop(true)之后调用了setZOrderMediaOverlay(true)  遮挡问题
         afterview.setZOrderOnTop(true);
         afterview.setZOrderMediaOverlay(true);
